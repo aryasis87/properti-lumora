@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-jost), system-ui, sans-serif;
+
+  --color-cream: #13100b;
+  --color-ink: #efe7d6;
+  --color-forest: #c6a25c;
+  --color-forest-soft: #b8924a;
+  --color-sand: #1e190f;
+  --color-gold: #c6a25c;
+  --color-muted: #9b9180;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0; font-weight: 500; }
+
+/* Lumora motif: sharp, minimal corners (luxury) */
+.arch { border-radius: 0.5rem; }
+.arch-sm { border-radius: 0.4rem; }
+
+/* Dark-luxury overrides for the light-built base */
+.bg-white, .bg-white\/95 { background-color: #1b160d !important; }
+.border-black\/5 { border-color: rgba(255, 255, 255, 0.08) !important; }
+.border-black\/10 { border-color: rgba(255, 255, 255, 0.12) !important; }
+.bg-black\/5 { background-color: rgba(255, 255, 255, 0.06) !important; }
+/* On gold bands/badges/buttons → use dark ink text */
+.bg-forest, .bg-forest *, .bg-forest-soft, .bg-gold, .bg-gold * { color: #13100b !important; }
+
+@keyframes marquee-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.animate-marquee-x { animation: marquee-x 34s linear infinite; }
+
+.numeral-outline { -webkit-text-stroke: 1px var(--color-gold); color: transparent; }
+
+.grain { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #13100b; }
+::-webkit-scrollbar-thumb { background: #3a3220; border-radius: 9999px; }
+
+:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 2px; border-radius: 4px; }
