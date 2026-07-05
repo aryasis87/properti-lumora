@@ -6,9 +6,38 @@ import Footer from "@/components/Footer";
 const cormorant = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-cormorant", weight: ["400", "500", "600", "700"], style: ["normal", "italic"], display: "swap" });
 const jost = Jost({ subsets: ["latin"], variable: "--font-jost", display: "swap" });
 
+const __jsonld = {"@context":"https://schema.org","@type":"RealEstateAgent","name":"Lumora","description":"Marketplace properti premium","url":"https://properti-lumora.vercel.app","areaServed":"ID"};
+
 export const metadata = {
+  metadataBase: new URL("https://properti-lumora.vercel.app"),
   title: "Lumora — Properti Premium Pilihan",
   description: "Marketplace properti premium: hunian, villa, dan ruang eksklusif di lokasi terbaik se-Indonesia.",
+  applicationName: "Lumora",
+  keywords: ["properti premium", "villa mewah", "hunian eksklusif", "luxury property", "real estate"],
+  authors: [{ name: "Lumora" }],
+  creator: "Lumora",
+  publisher: "Lumora",
+  alternates: { canonical: "https://properti-lumora.vercel.app" },
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://properti-lumora.vercel.app",
+    siteName: "Lumora",
+    title: "Lumora — Properti Premium Pilihan",
+    description: "Marketplace properti premium: hunian, villa, dan ruang eksklusif di lokasi terbaik se-Indonesia.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lumora — Properti Premium Pilihan" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lumora — Properti Premium Pilihan",
+    description: "Marketplace properti premium: hunian, villa, dan ruang eksklusif di lokasi terbaik se-Indonesia.",
+    images: ["/og.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -19,7 +48,8 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
-      </body>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(__jsonld) }} />
+        </body>
     </html>
   );
 }
